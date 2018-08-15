@@ -1,0 +1,50 @@
+<script src="../../../../app/controllers/mainCtrl.js"></script>
+<!-- Heading -->
+
+<div ng-controller="mainCtrl as reg">
+    <div ng-if = "reg.isAdmin">
+            <div class="row text-center">
+                    <div class="container">
+                        <h2 class="section-heading">User Management</h2>
+                        <h3 class="section-subheading text-muted">Hello <strong>{{ main.username }}, </strong>This page allows you to edit and delete users.</h3>
+                    </div>
+                </div>
+                <!-- Heading -->
+                
+                <!-- User Management Table -->
+                <div class="panel panel-primary">
+                  
+                    <!-- Start: Table -->
+                    <table class="table">
+                        <tr>
+                            <th>Name</th>
+                            <th>Username</th>
+                           
+                        </tr>
+                        <tr ng-repeat="user in reg.users">
+                            <td>{{ user.name }}</td>
+                            <td>{{ user.username }}</td>
+                            
+                            <td>
+                                <!-- Edit Button -->
+                                <a href="/edit/{{ user._id }}">
+                                    <button type="button" class="btn btn-primary">Edit</button>
+                                </a>
+                                <!-- Delete Button -->
+                                <button type="button" ng-click="reg.deleteUser(user._id);"  class="btn btn-danger">Delete</button>
+                            </td>
+                        </tr>
+                        <!-- End: Table -->
+                    </table>
+                </div>
+                <!-- User Management Table -->
+                
+                <br>
+                <br>           
+    </div>
+
+    <div ng-if = "!reg.isAdmin">
+        <h1>You have not authorization to view this page!</h1>
+    </div>
+</div>
+

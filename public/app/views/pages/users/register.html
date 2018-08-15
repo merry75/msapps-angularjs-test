@@ -1,0 +1,88 @@
+<script src="../../../../app/controllers/mainCtrl.js"></script>
+<!-- Heading -->
+<div class="row text-center">
+    <div class="container"  ng-controller="mainCtrl as reg" >
+
+        <h2 ng-if = "!reg.isAdmin"class="section-heading">User Registration</h2>
+        <h2 ng-if = "reg.isAdmin"class="section-heading">Admin Registration</h2>
+    </div>
+</div>
+<!-- Heading -->
+
+<!-- Main Section -->
+<section id="contact">
+    <!-- Start of Container -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <form name="regForm" ng-submit="register.regUser(regData, regForm.$valid, confirmed);" id="contactForm" novalidate>
+                    <div class="row">
+                           
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div ng-class="{ 'has-success':(regForm.firstName.$valid && !regForm.firstName.$pristine), 'has-error':(!regForm.firstName.$valid && !regForm.firstName.$pristine) || (!regForm.firstName.$valid && regForm.$submitted) }">
+                                    <!-- First Name Input -->
+                                    <label>First Name:</label>
+                                    <input ng-disabled="register.disabled" class="form-control" type="text" name="firstName" placeholder="First Name *" ng-model="register.regData.firstName" required>                               
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div ng-class="{ 'has-success':(regForm.lastName.$valid && !regForm.lastName.$pristine), 'has-error':(!regForm.lastName.$valid && !regForm.lastName.$pristine) || (!regForm.lastName.$valid && regForm.$submitted) }">
+                                    <!-- Last Name Input -->
+                                    <label>Last Name:</label>
+                                    <input ng-disabled="register.disabled" class="form-control" type="text" name="lastName" placeholder="Last Name *" ng-model="register.regData.lastName" required>
+                                  
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <!-- Username Div -->
+                                <div ng-class="{ 'has-success':(regForm.username.$valid && !regForm.username.$pristine && !register.usernameInvalid), 'has-error':(!regForm.username.$valid && !regForm.username.$pristine) || (!regForm.username.$valid && regForm.$submitted) || register.usernameInvalid }">
+                                    <!-- Username Input -->
+                                    <label>Username:</label>
+                                    <input ng-disabled="register.disabled" class="form-control" type="text" name="username" placeholder="Username *" ng-model="register.regData.username"  required>
+                              
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <!-- Password Div -->
+                                <div ng-class="{ 'has-success':(regForm.password.$valid && !regForm.password.$pristine), 'has-error':(!regForm.password.$valid && !regForm.password.$pristine) || (!regForm.password.$valid && regForm.$submitted) }">
+                                    <!-- Password Input -->
+                                    <label>Password:</label>
+                                    <input ng-disabled="register.disabled" class="form-control" type="password" name="password" placeholder="Password *" ng-model="register.regData.password" required>
+                                  
+                                </div>
+                                <!-- Password Div -->
+                            </div>
+                        </div>
+ 
+                        <div class="clearfix"></div>
+                        <div class="col-lg-12 text-left">
+                            <div id="success"></div>
+                            <!-- Login Button -->
+                            <button type="submit" ng-disabled="register.disabled" class="btn btn-xl">Register</button>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <br>
+
+        <!-- Custom Messages -->
+        <div class="row show-hide-message" ng-show="register.successMsg || register.errorMsg">
+            <div ng-class="alert">{{ register.successMsg || register.errorMsg }}</div>
+        </div>
+        <!-- Custom Messages -->
+
+    </div>
+    <!-- End of Container -->
+</section>
+<!-- Main Section /-->

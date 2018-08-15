@@ -1,0 +1,55 @@
+<!-- Heading -->
+<div class="row text-center">
+    <div class="container">
+        <h2 class="section-heading">User Login</h2>
+        <h3 class="section-subheading text-muted">Please enter your login information.</h3>
+    </div>
+</div>
+<!-- Heading -->
+
+<!-- Main Section -->
+<section id="contact">
+    <!-- Start of Container -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <form name="sentMessage" id="contactForm" ng-submit="main.doLogin(loginData);" novalidate>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!-- Username Input -->
+                            <div class="form-group">
+                                <label>Username:</label>
+                                <input ng-disabled="main.disabled" class="form-control" type="text" name="username" placeholder="username *" ng-model="main.loginData.username" autocomplete="off">
+                            </div>
+                            <!-- Password Input -->
+                            <div class="form-group">
+                                <label>Password:</label>
+                                <input ng-disabled="main.disabled" class="form-control" type="password" name="password" placeholder="password *" ng-model="main.loginData.password">
+                            </div>
+                        </div>
+                       
+                        <div class="clearfix"></div>
+                        <div class="col-lg-12 text-left">
+                       
+                            <div id="success"></div>
+                            <!-- Login Button -->
+                            <button type="submit" ng-disabled="main.disabled" class="btn btn-xl">Login</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <br>
+
+
+        <!-- Custom Messages -->
+        <div class="row show-hide-message" ng-show="main.successMsg || main.errorMsg || facebook.errorMsg || twitter.errorMsg || google.errorMsg">
+            <div ng-class="alert">{{ main.successMsg || main.errorMsg }}</div>&nbsp
+        </div>
+        <!-- Custom Messages -->
+
+    </div>
+    <!-- End of Container -->
+</section>
+<!-- Main Section /-->
